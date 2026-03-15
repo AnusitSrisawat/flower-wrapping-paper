@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 
 const products = [
@@ -23,21 +23,81 @@ const products = [
 ]
 
 function App() {
+  const AUTO_SLIDE_MS = 8000
+  const SWIPE_THRESHOLD = 45
+
   const [activeIndex, setActiveIndex] = useState(0)
   const [imageErrors, setImageErrors] = useState({})
+  const [visibleCount, setVisibleCount] = useState(() =>
+    window.innerWidth >= 1024 ? 3 : 1,
+  )
+  const touchStartX = useRef(null)
+
+  const maxStartIndex = Math.max(products.length - visibleCount, 0)
+  const pageCount = maxStartIndex + 1
 
   useEffect(() => {
+    const updateVisibleCount = () => {
+      setVisibleCount(window.innerWidth >= 1024 ? 3 : 1)
+    }
+
+    window.addEventListener('resize', updateVisibleCount)
+    return () => {
+      window.removeEventListener('resize', updateVisibleCount)
+    }
+  }, [])
+
+  useEffect(() => {
+    setActiveIndex((prev) => Math.min(prev, maxStartIndex))
+  }, [maxStartIndex])
+
+  useEffect(() => {
+    if (pageCount <= 1) {
+      return undefined
+    }
+
     const timer = window.setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % products.length)
-    }, 4500)
+      setActiveIndex((prev) => (prev >= maxStartIndex ? 0 : prev + 1))
+    }, AUTO_SLIDE_MS)
 
     return () => {
       window.clearInterval(timer)
     }
-  }, [])
+  }, [AUTO_SLIDE_MS, maxStartIndex, pageCount])
 
   const goToSlide = (index) => {
     setActiveIndex(index)
+  }
+
+  const goToNextSlide = () => {
+    setActiveIndex((prev) => (prev >= maxStartIndex ? 0 : prev + 1))
+  }
+
+  const goToPrevSlide = () => {
+    setActiveIndex((prev) => (prev <= 0 ? maxStartIndex : prev - 1))
+  }
+
+  const handleTouchStart = (event) => {
+    touchStartX.current = event.touches[0].clientX
+  }
+
+  const handleTouchEnd = (event) => {
+    if (touchStartX.current === null) {
+      return
+    }
+
+    const touchEndX = event.changedTouches[0].clientX
+    const deltaX = touchStartX.current - touchEndX
+
+    if (Math.abs(deltaX) >= SWIPE_THRESHOLD) {
+      if (deltaX > 0) {
+        goToNextSlide()
+      } else {
+        goToPrevSlide()
+      }
+    }
+
+    touchStartX.current = null
   }
 
   return (
@@ -87,13 +147,20 @@ function App() {
           <p>เลื่อนอัตโนมัติทีละรายการ เพื่อแสดงรายละเอียดสินค้าแต่ละประเภท</p>
         </div>
 
-        <div className="carousel" role="region" aria-label="Product showcase carousel">
+        <div
+          className="carousel"
+          role="region"
+          aria-label="Product showcase carousel"
+          style={{ '--visible-count': visibleCount }}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           <div
             className="carousel-track"
-            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+            style={{ transform: `translateX(-${activeIndex * (100 / visibleCount)}%)` }}
           >
             {products.map((product, index) => (
-              <article className="slide" key={product.name} aria-hidden={activeIndex !== index}>
+              <article className="slide" key={product.name}>
                 <div className="slide-image-wrap">
                   {imageErrors[product.name] ? (
                     <div className="image-placeholder">
@@ -124,17 +191,42 @@ function App() {
             ))}
           </div>
 
+          <div className="carousel-controls">
+            <button
+              type="button"
+              className="carousel-nav-btn"
+              onClick={goToPrevSlide}
+              aria-label="Previous products"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M14.5 5.5L8.5 12L14.5 18.5" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              className="carousel-nav-btn"
+              onClick={goToNextSlide}
+              aria-label="Next products"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M9.5 5.5L15.5 12L9.5 18.5" />
+              </svg>
+            </button>
+          </div>
+
+          {/*
           <div className="dots" aria-label="Slide navigation">
-            {products.map((product, index) => (
+            {Array.from({ length: pageCount }).map((_, index) => (
               <button
-                key={product.name}
+                key={`page-${index}`}
                 type="button"
                 className={`dot ${activeIndex === index ? 'dot-active' : ''}`}
                 onClick={() => goToSlide(index)}
-                aria-label={`Show ${product.name}`}
+                aria-label={`Show product page ${index + 1}`}
               />
             ))}
           </div>
+          */}
         </div>
       </section>
     </main>
