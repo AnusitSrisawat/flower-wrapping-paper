@@ -128,16 +128,17 @@ function App() {
                 onError={() => markImageError('split-section-image')}
               />
             )}
+          </div>
 
-            <div className="split-text-panel">
-              <h2 id="split-section-title">Flower Story</h2>
-              <p>
-                เรานำเศษวัสดุจากดอกไม้มาออกแบบเป็นกระดาษใช้งานจริง
-                เพื่อสร้างมูลค่าใหม่ที่ยังคงความสวยงามและเป็นมิตรต่อสิ่งแวดล้อม
-              </p>
-            </div>
+          <div className="split-text-panel">
+            <h2 id="split-section-title">Flower Story</h2>
+            <p>
+              เรานำเศษวัสดุจากดอกไม้มาออกแบบเป็นกระดาษใช้งานจริง
+              เพื่อสร้างมูลค่าใหม่ที่ยังคงความสวยงามและเป็นมิตรต่อสิ่งแวดล้อม
+            </p>
           </div>
         </section>
+
       </div>
     </main>
   )

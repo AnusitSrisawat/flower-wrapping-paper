@@ -1,9 +1,12 @@
 .catalog-page {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 0;
 }
 
 .catalog-sheet {
+  width: 100%;
   margin: 0 auto;
   background: #fffdf9;
   border: 1px solid #cfc6bc;
@@ -14,10 +17,6 @@
 .catalog-header,
 .split-section {
   border-bottom: 1px solid #cfc6bc;
-}
-
-.catalog-header {
-  height: 100dvh;
 }
 
 .catalog-topbar {
@@ -58,9 +57,11 @@
   justify-self: end;
 }
 
-.hero-panel {
-  display: block;
-  height: 100%;
+.catalog-header {
+  min-height: 100vh;
+  height: 100svh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .hero-visual {
@@ -81,12 +82,13 @@
 .split-section {
   display: flex;
   height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .split-text-panel,
 .split-image-panel {
-  width: 50%;
-  height: 100vh;
+  flex: 1 1 50%;
 }
 
 .split-text-panel {
@@ -129,13 +131,35 @@
   background: linear-gradient(135deg, #efe0cf 0%, #fffdfa 100%);
 }
 
+@media (max-width: 1024px) {
+  .catalog-topbar {
+    --topbar-height: 44px;
+    padding: 0 0.55rem;
+    font-size: 0.74rem;
+  }
+
+  .topbar-logo {
+    height: 34px;
+    max-width: 140px;
+  }
+
+  .split-text-panel {
+    padding: clamp(1rem, 3vw, 1.8rem);
+  }
+
+  .split-text-panel p {
+    max-width: 44ch;
+  }
+}
+
 @media (max-width: 760px) {
   .catalog-page {
-    padding: 0.75rem 0.35rem 1.5rem;
+    min-height: 100vh;
   }
 
   .catalog-header {
-    height: 100vh;
+    min-height: 100vh;
+    height: 100svh;
   }
 
   .split-section {
@@ -146,5 +170,15 @@
   .split-image-panel {
     width: 100%;
     height: 100vh;
+  }
+
+  .split-text-panel {
+    order: 1;
+    border-right: 0;
+    border-bottom: 1px solid #cfc6bc;
+  }
+
+  .split-image-panel {
+    order: 2;
   }
 }
