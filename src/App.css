@@ -55,6 +55,8 @@
 
 .topbar-right {
   justify-self: end;
+  display: flex;
+  align-items: center;
 }
 
 .topbar-nav {
@@ -192,6 +194,33 @@
 }
 
 @media (max-width: 760px) {
+  .catalog-topbar {
+    --topbar-height: 52px;
+    grid-template-columns: auto auto 1fr;
+    padding: 0 0.45rem;
+    column-gap: 0.4rem;
+  }
+
+  .topbar-logo {
+    height: 46px;
+    max-width: 110px;
+  }
+
+  .topbar-nav {
+    gap: 0.45rem;
+    padding-left: 0;
+    white-space: nowrap;
+  }
+
+  .topbar-nav a {
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+    padding: 0.22rem 0.45rem;
+    border: 1px solid #d7cdc2;
+    border-radius: 999px;
+    background: rgba(255, 253, 249, 0.85);
+  }
+
   .catalog-page {
     min-height: 100vh;
   }
