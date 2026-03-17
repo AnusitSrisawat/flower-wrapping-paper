@@ -21,7 +21,8 @@ function App() {
     <main className="catalog-page">
       <div className="catalog-sheet">
         <header className="catalog-topbar">
-          <span className="topbar-left"></span>
+          <span className="topbar-left">
+          </span>
           <h1 className="topbar-title">
             <img
               src="/images/sinun_logo_clean_edges.png"
@@ -30,7 +31,12 @@ function App() {
               loading="lazy"
             />
           </h1>
-          <span className="topbar-right"></span>
+          <span className="topbar-right">
+            <nav className="topbar-nav">
+              <a href="#story">Our Story</a>
+              <a href="#products">Products</a>
+            </nav>
+          </span>
         </header>
 
         <header className="catalog-header" aria-label="Featured and thumbnail area">
@@ -49,9 +55,9 @@ function App() {
           </div>
         </header>
 
-        <section className="split-section" aria-labelledby="split-section-title">
+        <section id="story" className="split-section" aria-labelledby="story-title">
           <div className="split-text-panel">
-            <h2 id="split-section-title">Origin & Concept</h2>
+            <h2 id="story-title">Origin &amp; Concept</h2>
             <p>
               ธุรกิจของเราเริ่มต้นจากความผูกพันของครอบครัวสมาชิกในทีมกับวิถีชีวิตของคนไทย ที่ดอกไม้และพวงมาลัยเป็นส่วนหนึ่งของพิธีกรรมทางศาสนาและวัฒนธรรมมาอย่างยาวนาน
               จากประสบการณ์ที่เติบโตมาในสภาพแวดล้อมเช่นนี้ เราได้เห็นดอกไม้จำนวนมากถูกทิ้งก่อนจะได้ใช้งานจริง โดยเฉพาะในฤดูฝน กลายเป็นความสูญเปล่าที่เกิดขึ้นซ้ำแล้วซ้ำเล่า
@@ -74,7 +80,7 @@ function App() {
             )}
           </div>
         </section>
-        <section className="split-section" aria-labelledby="split-section-title">
+        <section id='products' className="split-section" aria-labelledby="split-section-title">
           <div className="split-image-panel frame">
             {imageErrors['split-section-image'] ? (
               <div className="image-placeholder">Split section image</div>

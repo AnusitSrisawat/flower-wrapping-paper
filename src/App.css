@@ -57,6 +57,26 @@
   justify-self: end;
 }
 
+.topbar-nav {
+  display: flex;
+  gap: 1.5rem;
+  padding-left: 0.4rem;
+  align-items: center;
+}
+
+.topbar-nav a {
+  color: #76665a;
+  text-decoration: none;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.18s;
+}
+
+.topbar-nav a:hover {
+  color: #3d2e24;
+}
+
 .catalog-header {
   min-height: 100vh;
   height: 100svh;
@@ -152,6 +172,14 @@
 
   .topbar-logo {
     height: 80px;
+  }
+
+  .topbar-nav a {
+    font-size: 0.68rem;
+  }
+
+  .product-section {
+    padding-top: 44px;
   }
 
   .split-text-panel {
