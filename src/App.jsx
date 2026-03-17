@@ -6,6 +6,12 @@ const historyImage = '/images/history.jpg'
 const productImage1 = '/images/products/1.jpg'
 const productImage2 = '/images/products/2.jpg'
 const productImage3 = '/images/products/3.jpg'
+const productImage4 = '/images/products/4.jpg'
+const productImage5 = '/images/products/5.jpg'
+const productImage6 = '/images/products/6.jpg'
+const productImage7 = '/images/products/7.jpg'
+
+const showcaseImages = [productImage1, productImage2, productImage3, productImage4, productImage5, productImage6, productImage7]
 
 function App() {
   const [imageErrors, setImageErrors] = useState({})
@@ -54,6 +60,36 @@ function App() {
             )}
           </div>
         </header>
+
+        <section id="show-products" className="show-products" aria-label="Product showcase">
+          <div className="show-products-viewport">
+            <div className="show-products-track">
+              {[0, 1].map((groupIndex) => (
+                <div
+                  key={`group-${groupIndex}`}
+                  className="show-products-group"
+                  aria-hidden={groupIndex === 1}
+                >
+                  {[...showcaseImages, ...showcaseImages].map((src, idx) => (
+                    <div key={`${groupIndex}-${src}-${idx}`} className="show-products-item frame">
+                      {imageErrors[`show-${groupIndex}-${idx}`] ? (
+                        <div className="image-placeholder">Showcase image</div>
+                      ) : (
+                        <img
+                          src={src}
+                          alt="Product showcase"
+                          className="showcase-image"
+                          loading="lazy"
+                          onError={() => markImageError(`show-${groupIndex}-${idx}`)}
+                        />
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <section id="story" className="split-section" aria-labelledby="story-title">
           <div className="split-text-panel">
