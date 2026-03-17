@@ -83,7 +83,7 @@ function App() {
         <section id="show-products" className="show-products" aria-label="Product showcase">
           <div className="show-products-viewport">
             <div className="show-products-track">
-              {[0, 1].map((groupIndex) => (
+              {[0, 1, 2, 3, 4].map((groupIndex) => (
                 <div
                   key={`group-${groupIndex}`}
                   className="show-products-group"
