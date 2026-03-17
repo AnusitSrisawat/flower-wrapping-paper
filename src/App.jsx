@@ -92,16 +92,6 @@ function App() {
         </section>
 
         <section id="story" className="split-section" aria-labelledby="story-title">
-          <div className="split-text-panel">
-            <h2 id="story-title">Origin &amp; Concept</h2>
-            <p>
-              ธุรกิจของเราเริ่มต้นจากความผูกพันของครอบครัวสมาชิกในทีมกับวิถีชีวิตของคนไทย ที่ดอกไม้และพวงมาลัยเป็นส่วนหนึ่งของพิธีกรรมทางศาสนาและวัฒนธรรมมาอย่างยาวนาน
-              จากประสบการณ์ที่เติบโตมาในสภาพแวดล้อมเช่นนี้ เราได้เห็นดอกไม้จำนวนมากถูกทิ้งก่อนจะได้ใช้งานจริง โดยเฉพาะในฤดูฝน กลายเป็นความสูญเปล่าที่เกิดขึ้นซ้ำแล้วซ้ำเล่า
-              เราจึงนำดอกไม้ที่ยังคงคุณค่ากลับมาแปรรูปและสร้างสรรค์เป็นผลิตภัณฑ์รียูส เพื่อลดขยะ เพิ่มมูลค่า และยืดอายุความงดงามของดอกไม้
-              เพราะสำหรับเรา ความงดงามไม่ควรสิ้นสุดเพียงเพราะเวลา
-            </p>
-          </div>
-
           <div className="split-image-panel split-image-panel--history frame">
             {imageErrors['split-section-image'] ? (
               <div className="image-placeholder">Split section image</div>
@@ -115,8 +105,28 @@ function App() {
               />
             )}
           </div>
+
+          <div className="split-text-panel">
+            <h2 id="story-title">Origin &amp; Concept</h2>
+            <p>
+              ธุรกิจของเราเริ่มต้นจากความผูกพันของครอบครัวสมาชิกในทีมกับวิถีชีวิตของคนไทย ที่ดอกไม้และพวงมาลัยเป็นส่วนหนึ่งของพิธีกรรมทางศาสนาและวัฒนธรรมมาอย่างยาวนาน
+              จากประสบการณ์ที่เติบโตมาในสภาพแวดล้อมเช่นนี้ เราได้เห็นดอกไม้จำนวนมากถูกทิ้งก่อนจะได้ใช้งานจริง โดยเฉพาะในฤดูฝน กลายเป็นความสูญเปล่าที่เกิดขึ้นซ้ำแล้วซ้ำเล่า
+              เราจึงนำดอกไม้ที่ยังคงคุณค่ากลับมาแปรรูปและสร้างสรรค์เป็นผลิตภัณฑ์รียูส เพื่อลดขยะ เพิ่มมูลค่า และยืดอายุความงดงามของดอกไม้
+              เพราะสำหรับเรา ความงดงามไม่ควรสิ้นสุดเพียงเพราะเวลา
+            </p>
+          </div>
         </section>
         <section id='products' className="split-section" aria-labelledby="split-section-title">
+          <div className="split-text-panel">
+            <h2 id="split-section-title">Flower Wrapping Paper</h2>
+            <p>
+              กระดาษห่อดอกไม้ที่ผสมผสานเศษกลีบดอกจริงลงในเนื้อกระดาษ
+              ทำให้ทุกชิ้นมีลวดลายและสีสันที่ไม่ซ้ำกัน
+              เหมาะสำหรับห่อของขวัญ จัดช่อดอกไม้ หรือตกแต่งงานพิเศษ
+              สวยงามในแบบที่ธรรมชาติออกแบบให้
+            </p>
+          </div>
+
           <div className="split-image-panel frame">
             {imageErrors['split-section-image'] ? (
               <div className="image-placeholder">Split section image</div>
@@ -130,27 +140,8 @@ function App() {
               />
             )}
           </div>
-
-          <div className="split-text-panel">
-            <h2 id="split-section-title">Flower Wrapping Paper</h2>
-            <p>
-              กระดาษห่อดอกไม้ที่ผสมผสานเศษกลีบดอกจริงลงในเนื้อกระดาษ
-              ทำให้ทุกชิ้นมีลวดลายและสีสันที่ไม่ซ้ำกัน
-              เหมาะสำหรับห่อของขวัญ จัดช่อดอกไม้ หรือตกแต่งงานพิเศษ
-              สวยงามในแบบที่ธรรมชาติออกแบบให้
-            </p>
-          </div>
         </section>
         <section className="split-section" aria-labelledby="split-section-title">
-          <div className="split-text-panel">
-            <h2 id="split-section-title">Shoe Packaging Paper</h2>
-            <p>
-              กระดาษรองรองเท้าที่เปลี่ยนชั้นในกล่องธรรมดาให้กลายเป็นประสบการณ์แกะกล่องที่น่าจดจำ
-              พื้นผิวนุ่ม กลิ่นอ่อนๆ จากธรรมชาติ และรายละเอียดของกลีบดอกไม้
-              ช่วยยกระดับความรู้สึกของผู้รับตั้งแต่วินาทีแรกที่เปิดกล่อง
-            </p>
-          </div>
-
           <div className="split-image-panel frame">
             {imageErrors['split-section-image'] ? (
               <div className="image-placeholder">Split section image</div>
@@ -164,8 +155,27 @@ function App() {
               />
             )}
           </div>
+
+          <div className="split-text-panel">
+            <h2 id="split-section-title">Shoe Packaging Paper</h2>
+            <p>
+              กระดาษรองรองเท้าที่เปลี่ยนชั้นในกล่องธรรมดาให้กลายเป็นประสบการณ์แกะกล่องที่น่าจดจำ
+              พื้นผิวนุ่ม กลิ่นอ่อนๆ จากธรรมชาติ และรายละเอียดของกลีบดอกไม้
+              ช่วยยกระดับความรู้สึกของผู้รับตั้งแต่วินาทีแรกที่เปิดกล่อง
+            </p>
+          </div>
         </section>
         <section className="split-section" aria-labelledby="split-section-title">
+          <div className="split-text-panel">
+            <h2 id="split-section-title">Packaging</h2>
+            <p>
+              บรรจุภัณฑ์ที่เล่าเรื่องราวของแบรนด์ได้ตั้งแต่ก่อนเปิด
+              ผลิตจากกระดาษดอกไม้รีไซเคิลที่สามารถปรับแต่งขนาดและลวดลายได้ตามต้องการ
+              เหมาะสำหรับแบรนด์ที่ต้องการสื่อสารคุณค่าของความยั่งยืน
+              ในแบบที่ลูกค้าสัมผัสได้จริง
+            </p>
+          </div>
+
           <div className="split-image-panel frame">
             {imageErrors['split-section-image'] ? (
               <div className="image-placeholder">Split section image</div>
@@ -178,16 +188,6 @@ function App() {
                 onError={() => markImageError('split-section-image')}
               />
             )}
-          </div>
-
-          <div className="split-text-panel">
-            <h2 id="split-section-title">Packaging</h2>
-            <p>
-              บรรจุภัณฑ์ที่เล่าเรื่องราวของแบรนด์ได้ตั้งแต่ก่อนเปิด
-              ผลิตจากกระดาษดอกไม้รีไซเคิลที่สามารถปรับแต่งขนาดและลวดลายได้ตามต้องการ
-              เหมาะสำหรับแบรนด์ที่ต้องการสื่อสารคุณค่าของความยั่งยืน
-              ในแบบที่ลูกค้าสัมผัสได้จริง
-            </p>
           </div>
         </section>
 
