@@ -2,7 +2,10 @@ import { useState } from 'react'
 import './App.css'
 
 const heroImage = '/images/header-bg.jpg'
-const splitSectionImage = '/images/products/3.jpg'
+const historyImage = '/images/history.jpg'
+const productImage1 = '/images/products/1.jpg'
+const productImage2 = '/images/products/2.jpg'
+const productImage3 = '/images/products/3.jpg'
 
 function App() {
   const [imageErrors, setImageErrors] = useState({})
@@ -55,14 +58,14 @@ function App() {
             </p>
           </div>
 
-          <div className="split-image-panel frame">
+          <div className="split-image-panel split-image-panel--history frame">
             {imageErrors['split-section-image'] ? (
               <div className="image-placeholder">Split section image</div>
             ) : (
               <img
-                src={splitSectionImage}
+                src={historyImage}
                 alt="Large product visual"
-                className="media-image"
+                className="media-image media-image--history"
                 loading="lazy"
                 onError={() => markImageError('split-section-image')}
               />
@@ -75,7 +78,7 @@ function App() {
               <div className="image-placeholder">Split section image</div>
             ) : (
               <img
-                src={splitSectionImage}
+                src={productImage1}
                 alt="Large product visual"
                 className="media-image"
                 loading="lazy"
@@ -106,7 +109,7 @@ function App() {
               <div className="image-placeholder">Split section image</div>
             ) : (
               <img
-                src={splitSectionImage}
+                src={productImage2}
                 alt="Large product visual"
                 className="media-image"
                 loading="lazy"
@@ -121,7 +124,7 @@ function App() {
               <div className="image-placeholder">Split section image</div>
             ) : (
               <img
-                src={splitSectionImage}
+                src={productImage3}
                 alt="Large product visual"
                 className="media-image"
                 loading="lazy"

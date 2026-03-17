@@ -79,6 +79,8 @@
   object-fit: cover;
 }
 
+
+
 .split-section {
   display: flex;
   height: 100vh;
@@ -115,7 +117,16 @@
 }
 
 .split-image-panel {
+  position: relative;
   overflow: hidden;
+}
+
+.split-image-panel--history::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(199, 130, 162, 0.22);
+  pointer-events: none;
 }
 
 .image-placeholder {
