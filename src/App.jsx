@@ -13,6 +13,24 @@ const productImage7 = '/images/products/7.jpg'
 
 const showcaseImages = [productImage1, productImage2, productImage3, productImage4, productImage5, productImage6, productImage7]
 
+const founders = [
+  {
+    name: 'Founder 01',
+    role: 'Creative & Product Design',
+    bio: 'ดูแลแนวคิดการออกแบบผลิตภัณฑ์จากวัสดุดอกไม้ ให้ใช้งานได้จริงและยังคงความงดงามของธรรมชาติ',
+  },
+  {
+    name: 'Founder 02',
+    role: 'Material & Production',
+    bio: 'พัฒนากระบวนการแปรรูปและคุณภาพเนื้อกระดาษให้มีความสม่ำเสมอ รองรับการผลิตในงานบรรจุภัณฑ์หลากหลายรูปแบบ',
+  },
+  {
+    name: 'Founder 03',
+    role: 'Brand & Sustainability',
+    bio: 'วางทิศทางแบรนด์และการสื่อสารคุณค่าด้านความยั่งยืน เพื่อให้ลูกค้ารับรู้ผลกระทบเชิงบวกได้อย่างชัดเจน',
+  },
+]
+
 function App() {
   const [imageErrors, setImageErrors] = useState({})
 
@@ -41,6 +59,7 @@ function App() {
             <nav className="topbar-nav">
               <a href="#story">Our Story</a>
               <a href="#products">Products</a>
+              <a href="#founders">Founders</a>
             </nav>
           </span>
         </header>
@@ -188,6 +207,26 @@ function App() {
                 onError={() => markImageError('split-section-image')}
               />
             )}
+          </div>
+        </section>
+
+        <section id="founders" className="founders-section" aria-labelledby="founders-title">
+          <div className="founders-header">
+            <h2 id="founders-title">Founders</h2>
+            <p>ทีมผู้ก่อตั้งที่ร่วมกันขับเคลื่อนแนวคิดการอัปไซเคิลดอกไม้สู่ผลิตภัณฑ์ที่ใช้งานได้จริง</p>
+          </div>
+
+          <div className="founders-grid">
+            {founders.map((founder) => (
+              <article key={founder.name} className="founder-card frame">
+                <div className="founder-avatar" aria-hidden="true">
+                  {founder.name.slice(-2)}
+                </div>
+                <h3>{founder.name}</h3>
+                <p className="founder-role">{founder.role}</p>
+                <p className="founder-bio">{founder.bio}</p>
+              </article>
+            ))}
           </div>
         </section>
 
