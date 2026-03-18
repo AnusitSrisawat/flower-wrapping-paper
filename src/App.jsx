@@ -3,6 +3,7 @@ import './App.css'
 
 const heroImage = '/images/header-bg.jpg'
 const historyImage = '/images/history.jpg'
+
 const productImage1 = '/images/products/1.jpg'
 const productImage2 = '/images/products/2.jpg'
 const productImage3 = '/images/products/3.jpg'
@@ -10,24 +11,35 @@ const productImage4 = '/images/products/4.jpg'
 const productImage5 = '/images/products/5.jpg'
 const productImage6 = '/images/products/6.jpg'
 const productImage7 = '/images/products/7.jpg'
+const productImage8 = '/images/products/8.jpg'
+const productImage9 = '/images/products/9.jpg'
+const productImage10 = '/images/products/10.jpg'
 
-const showcaseImages = [productImage1, productImage2, productImage3, productImage4, productImage5, productImage6, productImage7]
+const showcaseImages = [productImage1, productImage2, productImage3, productImage4, productImage5,
+  productImage6, productImage7, productImage8, productImage9, productImage10]
+
+const CEOImage1 = '/images/ceo/1.jpg'
+const CEOImage2 = '/images/ceo/2.jpg'
+const CEOImage3 = '/images/ceo/3.jpg'
 
 const founders = [
   {
     name: 'Founder 01',
-    role: 'Creative & Product Design',
-    bio: 'ดูแลแนวคิดการออกแบบผลิตภัณฑ์จากวัสดุดอกไม้ ให้ใช้งานได้จริงและยังคงความงดงามของธรรมชาติ',
+    role: 'COO',
+    bio: 'ดูแลการผลิตและการดำเนินงานทั้งหมด ให้ Product เป็นไปตามมาตรฐาน',
+    image: CEOImage1,
   },
   {
     name: 'Founder 02',
-    role: 'Material & Production',
-    bio: 'พัฒนากระบวนการแปรรูปและคุณภาพเนื้อกระดาษให้มีความสม่ำเสมอ รองรับการผลิตในงานบรรจุภัณฑ์หลากหลายรูปแบบ',
+    role: 'CEO',
+    bio: 'กำหนดทิศทางและวางแผนธุรกิจ ให้เป็นไปตามเป้าหมาย',
+    image: CEOImage2,
   },
   {
     name: 'Founder 03',
-    role: 'Brand & Sustainability',
-    bio: 'วางทิศทางแบรนด์และการสื่อสารคุณค่าด้านความยั่งยืน เพื่อให้ลูกค้ารับรู้ผลกระทบเชิงบวกได้อย่างชัดเจน',
+    role: 'BD',
+    bio: 'ติดต่อสื่อสารและสร้างพันธมิตร เพื่อเพิ่มข้อมูลในการต่อยอดธุรกิจ',
+    image: CEOImage3,
   },
 ]
 
@@ -216,14 +228,19 @@ function App() {
             <p>ทีมผู้ก่อตั้งที่ร่วมกันขับเคลื่อนแนวคิดการอัปไซเคิลดอกไม้สู่ผลิตภัณฑ์ที่ใช้งานได้จริง</p>
           </div>
 
-          <div className="founders-grid">
+          <div className="founders-container">
             {founders.map((founder) => (
               <article key={founder.name} className="founder-card frame">
-                <div className="founder-avatar" aria-hidden="true">
-                  {founder.name.slice(-2)}
+                <div className="founder-avatar frame">
+                  <img
+                    src={founder.image}
+                    alt={founder.name}
+                    className="founder-avatar-image"
+                    loading="lazy"
+                    onError={() => markImageError(`founder-${founder.name}`)}
+                  />
                 </div>
-                <h3>{founder.name}</h3>
-                <p className="founder-role">{founder.role}</p>
+                <h3 className="founder-role">{founder.role}</h3>
                 <p className="founder-bio">{founder.bio}</p>
               </article>
             ))}
